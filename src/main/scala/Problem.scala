@@ -4,9 +4,8 @@ object Problem extends App {
   private val delimiter: Int = 40
 
   private val solution = new Solution(text, delimiter)
-  private val textWithBreakLineTag: String = solution.resolve()
+  private val linesList: Array[String] = solution.resolve()
 
-  private val brokenLines = textWithBreakLineTag.split(solution.breakLine)
-  brokenLines.foreach(line => println(line))
+  linesList.foreach(line => println(line))
 
 }

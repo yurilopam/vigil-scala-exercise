@@ -1,13 +1,13 @@
 class Solution(text: String, delimiter: Int) {
-  
-  val breakLine: String = "BREAK_LINE"
-  
+
+
+  private val breakLine: String = "BREAK_LINE"
   private val whiteSpace: String = " "
 
-  def resolve(): String = {
-    val words: Array[String] = text.split(" ")
+  def resolve(): Array[String] = {
+    val words: Array[String] = text.split(whiteSpace)
 
-    words.reduce((accumulator, word) => {
+    val textWithBreakLineTag = words.reduce((accumulator, word) => {
       if (accumulator.length <= 0) {
         word
       } else if (accumulator.length + word.length - accumulator.lastIndexOf(breakLine) + 1 >= delimiter) {
@@ -16,6 +16,7 @@ class Solution(text: String, delimiter: Int) {
         accumulator + whiteSpace + word
       }
     })
+    textWithBreakLineTag.split(breakLine)
   }
 
 }
