@@ -1,11 +1,13 @@
-class Solution(text: String, delimiter: Int) {
-
+class Solution(text: String = "", delimiter: Int = 40) {
 
   private val breakLine: String = "BREAK_LINE"
   private val whiteSpace: String = " "
 
   def resolve(): Array[String] = {
-    val words: Array[String] = text.split(whiteSpace)
+
+    if (text == null) return Array()
+
+    val words: Array[String] = text.trim().split(whiteSpace)
 
     val textWithBreakLineTag = words.reduce((accumulator, word) => {
       if (accumulator.length <= 0) {

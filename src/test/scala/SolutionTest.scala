@@ -13,4 +13,34 @@ class SolutionTest extends AnyFlatSpec {
     result should contain theSameElementsAs expectedResult
   }
 
+  it should "return an Array with size one when the delimiter size is bigger than text max characters" in {
+    val text: String = "Lorem Ipsum is simply dummy text"
+    val expectedResult: Array[String] = Array("Lorem Ipsum is simply dummy text")
+
+    val solution: Solution = new Solution(text, 40)
+    val result = solution.resolve()
+
+    result should contain theSameElementsAs expectedResult
+  }
+
+  it should "return a Array with an empty String if an empty String is passed" in {
+    val text: String = "                                                                 "
+    val expectedResult: Array[String] = Array("")
+
+    val solution: Solution = new Solution(text, 40)
+    val result = solution.resolve()
+
+    result should contain theSameElementsAs expectedResult
+  }
+
+  it should "return an empty Array if null String is passed" in {
+    val text: String = null
+    val expectedResult: Array[String] = Array()
+
+    val solution: Solution = new Solution(text, 40)
+    val result = solution.resolve()
+
+    result should contain theSameElementsAs expectedResult
+  }
+
 }
